@@ -24,6 +24,11 @@ public class SearchContent {
                 .build();
     }
 
+    public SearchContent soldOutProduct(){
+        return SearchContent.builder()
+                .input("12 Ti Xelium Skis")
+                .build();
+    }
     public SearchContent shoes(){
         return SearchContent.builder()
                 .input("Shoes")
