@@ -15,6 +15,9 @@ public class ProductDetailsPage extends BasePage{
     @FindBy(className = "product__title")
     private WebElement productName;
 
+    @FindBy(xpath = "//*[@id=\"product-form-template--15328405717213__main\"]/div/button")
+    private WebElement addToCartBtn;
+
     public String getProductName(){
         return webActions.getText(productName);
     }
@@ -27,6 +30,11 @@ public class ProductDetailsPage extends BasePage{
         } catch (TimeoutException e) {
             return false;
         }
+    }
+
+    public CartPage clickAddToCart(){
+        buttonActions.click(addToCartBtn);
+        return new CartPage(webDriver);
     }
 
     public ProductDetailsPage(WebDriver webDriver) {
