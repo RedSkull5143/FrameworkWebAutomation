@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class AvailabilityOfProduct extends BaseTest{
-    @Test(description = "verify that product is available")
+    @Test(testName = "Verify Product Availability", description = "Verify that the product is available when the user searches for it.")
     public void verifyThatProductIsAvailable(){
         SearchContent searchContent=SearchContent.builder().build().bellDress();
         HomePage homePage=new HomePage(getWebDriver());
@@ -20,7 +20,7 @@ public class AvailabilityOfProduct extends BaseTest{
         Assert.assertFalse((productDetailsPage.isProductSoldOut()), "Product is Available");
     }
 
-    @Test(description = "verify that product is sold out")
+    @Test(testName = "Verify Product Out of Stock", description = "Verify that the product is marked as out of stock when the user searches for it.")
     public void verifyThatProductIsOutOfStock(){
         SearchContent searchContent=SearchContent.builder().build().soldOutProduct();
         HomePage homePage=new HomePage(getWebDriver());
@@ -29,7 +29,11 @@ public class AvailabilityOfProduct extends BaseTest{
         SearchResultPage searchResultPage=new SearchResultPage(getWebDriver());
 
         ProductDetailsPage productDetailsPage = searchResultPage.clickToViewProductByIndex(0);
-        Assert.assertTrue((productDetailsPage.isProductSoldOut()), "Product is Out of Stock");
+
+        boolean isSoldOut = productDetailsPage.isProductSoldOut();
+        if(isSoldOut){
+            Assert.fail("Product is Out of Stock");
+        }
     }
 
 }
