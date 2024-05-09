@@ -13,9 +13,7 @@ public class AvailabilityOfProduct extends BaseTest{
         SearchContent searchContent=SearchContent.builder().build().bellDress();
         HomePage homePage=new HomePage(getWebDriver());
         homePage.getHeader().clickSearchBtn().searchProduct(searchContent.getInput());
-
         SearchResultPage searchResultPage=new SearchResultPage(getWebDriver());
-
         ProductDetailsPage productDetailsPage = searchResultPage.clickToViewProductByIndex(0);
         Assert.assertFalse((productDetailsPage.isProductSoldOut()), "Product is Available");
     }
@@ -25,11 +23,8 @@ public class AvailabilityOfProduct extends BaseTest{
         SearchContent searchContent=SearchContent.builder().build().soldOutProduct();
         HomePage homePage=new HomePage(getWebDriver());
         homePage.getHeader().clickSearchBtn().searchProduct(searchContent.getInput());
-
         SearchResultPage searchResultPage=new SearchResultPage(getWebDriver());
-
         ProductDetailsPage productDetailsPage = searchResultPage.clickToViewProductByIndex(0);
-
         Assert.assertTrue(productDetailsPage.isProductSoldOut(), "The product is marked Out of Stock as expected.");
     }
 

@@ -8,7 +8,7 @@ import com.omshinde.capstone.pages.SearchResultPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class AddAvailableProductToCart extends BaseTest{
+public class AddAvailableProductToCartTest extends BaseTest{
 
     @Test(testName = "Verify that user adds product to cart when product in stock", description = "Verifies that a user is able to successfully add a product to the cart when it is available for purchase.")
     public void verifyUserIsAbleToAddProductToCart(){
