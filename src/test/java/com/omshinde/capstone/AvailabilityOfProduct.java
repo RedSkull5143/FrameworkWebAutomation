@@ -30,10 +30,7 @@ public class AvailabilityOfProduct extends BaseTest{
 
         ProductDetailsPage productDetailsPage = searchResultPage.clickToViewProductByIndex(0);
 
-        boolean isSoldOut = productDetailsPage.isProductSoldOut();
-        if(isSoldOut){
-            Assert.fail("Product is Out of Stock");
-        }
+        Assert.assertTrue(productDetailsPage.isProductSoldOut(), "The product is marked Out of Stock as expected.");
     }
 
 }
