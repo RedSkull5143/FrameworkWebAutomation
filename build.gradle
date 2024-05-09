@@ -22,7 +22,6 @@ dependencies {
 
     //TestNG
     testImplementation group: 'org.testng', name: 'testng', version: '7.10.1'
-
 }
 
 test {

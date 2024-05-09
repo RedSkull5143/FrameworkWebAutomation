@@ -18,6 +18,12 @@ public class SearchContent {
                 .build();
     }
 
+    public SearchContent bellDress(){
+        return SearchContent.builder()
+                .input("Bell Dress")
+                .build();
+    }
+
     public SearchContent shoes(){
         return SearchContent.builder()
                 .input("Shoes")
