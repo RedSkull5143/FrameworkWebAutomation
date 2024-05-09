@@ -1,6 +1,7 @@
 package com.omshinde.capstone;
 
 import com.omshinde.capstone.actions.SearchContent;
+import com.omshinde.capstone.modals.CartModal;
 import com.omshinde.capstone.pages.HomePage;
 import com.omshinde.capstone.pages.ProductDetailsPage;
 import com.omshinde.capstone.pages.SearchResultPage;
@@ -17,10 +18,11 @@ public class AddAvailableProductToCart extends BaseTest{
 
         SearchResultPage searchResultPage=new SearchResultPage(getWebDriver());
         ProductDetailsPage productDetailsPage = searchResultPage.clickToViewProductByName();
+        CartModal cartModal=new CartModal(getWebDriver());
 
         if(!productDetailsPage.isProductSoldOut()){
             productDetailsPage.clickAddToCart();
-            System.out.println("Item added to your cart");
+            Assert.assertTrue(cartModal.getSuccessMessage().contains("Item added to your cart"));
         }else{
             Assert.fail("Product Out of Stock");
         }
