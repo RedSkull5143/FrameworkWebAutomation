@@ -2,7 +2,7 @@
 
 ## Objective
 
-Developing an automated testing suite for an e-commerce web application at [https://web-playground.ultralesson.com/](https://web-playground.ultralesson.com/). The suite should cover key functionalities such as Search, Profile Management, Contact, Registration, Login, and Cart Operations using Java, Selenium, Gradle, Git, and TestNG, focusing on the efficiency and reliability of the tests.
+Developing an automated testing suite for an e-commerce web application at [https://web-playground.ultralesson.com/](https://web-playground.ultralesson.com/). The suite covers key functionalities such as Search, Profile Management, Contact, Registration, Login, and Cart Operations using Java, Selenium, Gradle, Git, and TestNG, focusing on the efficiency and reliability of the tests.
 
 ## Features
 
