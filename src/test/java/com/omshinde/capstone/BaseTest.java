@@ -6,25 +6,25 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
-    private static ThreadLocal<WebDriver> driverThreadLocal=new ThreadLocal<>();
     private static final String URL="https://web-playground.ultralesson.com/";
 
     @BeforeMethod(alwaysRun = true)
-    public synchronized void setUp(){
-        WebDriver driver = new ChromeDriver();
-        driverThreadLocal.set(driver);
-        launch();
-        driverThreadLocal.get().manage().window().maximize();
+    public synchronized void setUp() {
+        WebDriver driver = DriverFactory.getInstance().getDriver();
+        driver.manage().window().maximize();
+        launch(driver);
     }
 
     @AfterMethod(alwaysRun = true)
-    public synchronized void tearDown(){
-        driverThreadLocal.get().quit();
+    public synchronized void tearDown() {
+        DriverFactory.getInstance().quitDriver();
     }
-    protected synchronized void launch(){
-        driverThreadLocal.get().get(URL);
+
+    protected synchronized void launch(WebDriver driver) {
+        driver.get(URL);
     }
-    protected synchronized WebDriver getWebDriver(){
-        return driverThreadLocal.get();
+
+    protected synchronized WebDriver getWebDriver() {
+        return DriverFactory.getInstance().getDriver();
     }
 }
