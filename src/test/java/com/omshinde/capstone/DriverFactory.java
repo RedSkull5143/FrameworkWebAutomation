@@ -31,11 +31,13 @@ public class DriverFactory {
             return driverThreadLocal.get();
         }
 
-        public void quitDriver() {
-            if (driverThreadLocal.get() != null) {
-                driverThreadLocal.get().quit();
-                driverThreadLocal.remove();
-            }
+    public synchronized void quitDriver() {
+        WebDriver driver = driverThreadLocal.get();
+        if (driver != null) {
+            driver.quit();
+            driverThreadLocal.remove();
         }
     }
+
+}
 
