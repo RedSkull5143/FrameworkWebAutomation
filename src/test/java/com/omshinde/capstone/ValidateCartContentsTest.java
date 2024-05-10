@@ -56,7 +56,8 @@ public class ValidateCartContentsTest extends BaseTest{
             Assert.fail("Product Out of Stock");
         }
         cartModal.clickAddToCart();
-        double expectedTotalPrice= productPrice*cartPage.getQuantityOfAddedProduct();
+
+        double expectedTotalPrice= productPrice*productQuantity;
         double actualTotalPrice=cartPage.getProductAddedPrice();
 
         Assert.assertTrue(cartPage.getAddedProductName().contains(productName));
