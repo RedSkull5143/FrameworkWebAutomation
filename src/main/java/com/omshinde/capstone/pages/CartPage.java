@@ -1,8 +1,15 @@
 package com.omshinde.capstone.pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class CartPage extends BasePage{
 
@@ -42,7 +49,23 @@ public class CartPage extends BasePage{
         return webActions.getText(cartHeading);
     }
 
+    public CartPage removeProductFromCart(String productName) {
+        WebElement deleteBtn= webDriver.findElement(By.xpath("//*[@id=\"Remove-1\"]/a"));
+        buttonActions.click(deleteBtn);
+        return new CartPage(webDriver);
+    }
+
     public CartPage(WebDriver webDriver) {
         super(webDriver);
+    }
+    public boolean isCartEmpty() {
+        try {
+            WebDriverWait webDriverWait=new WebDriverWait(webDriver, Duration.ofSeconds(2));
+            WebElement emptyCartMessage = webDriver.findElement(By.xpath("//h1[normalize-space()='Your cart is empty']"));
+            webDriverWait.until(ExpectedConditions.visibilityOf(emptyCartMessage));
+            return emptyCartMessage.isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 }
