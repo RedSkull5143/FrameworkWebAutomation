@@ -29,8 +29,9 @@ public class ValidateCartContentsTest extends BaseTest{
 
         String cartHeading = cartModal.clickAddToCart().getCartHeading();
         Assert.assertTrue(cartHeading.contains("Your cart"),"Landed on Cart Page");
-        String currentUrl = getWebDriver().getCurrentUrl();
-        Assert.assertTrue(currentUrl.contains("/cart"), "Verify the current URL contains the /cart path after adding an item.");
+        String expectedUrl="https://web-playground.ultralesson.com/cart";
+        String actualUrl = getWebDriver().getCurrentUrl();
+        Assert.assertEquals(actualUrl, expectedUrl, "User should be navigated to the cart page.");
     }
 
 
