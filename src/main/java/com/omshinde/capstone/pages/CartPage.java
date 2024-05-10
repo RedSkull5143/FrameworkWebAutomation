@@ -26,12 +26,11 @@ public class CartPage extends BasePage{
 
     public double getProductAddedPrice(){
         String getPrice= webActions.getText(productAddedPrice);
-        String numberString = getPrice.replaceAll("[^0-9.]", "");
+        String numberString = getPrice.replaceAll("Rs. ", "");
         return Double.parseDouble(numberString);
     }
     public int getQuantityOfAddedProduct(){
-        int quantity=Integer.parseInt(productAddedQuantity.getAttribute("value"));
-        return quantity;
+        return Integer.parseInt(productAddedQuantity.getAttribute("value"));
     }
     public String getSizeOfAddedProduct(){
         return webActions.getText(productAddedSize).trim();

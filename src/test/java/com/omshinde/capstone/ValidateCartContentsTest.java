@@ -28,7 +28,7 @@ public class ValidateCartContentsTest extends BaseTest{
         }
 
         String cartHeading = cartModal.clickAddToCart().getCartHeading();
-        Assert.assertTrue(cartHeading.contains("Your cart"));
+        Assert.assertTrue(cartHeading.contains("Your cart"),"Landed on Cart Page");
     }
 
 
@@ -40,8 +40,12 @@ public class ValidateCartContentsTest extends BaseTest{
 
         SearchResultPage searchResultPage=new SearchResultPage(getWebDriver());
         ProductDetailsPage productDetailsPage = searchResultPage.clickToViewProductByName();
-        CartModal cartModal=new CartModal(getWebDriver());
+        double productPrice =productDetailsPage.getProductPrice();
+        String productName= productDetailsPage.getProductName();
+        String productSize=productDetailsPage.getSizeSelected();
+        int productQuantity= productDetailsPage.getQuantitySelected();
 
+        CartModal cartModal=new CartModal(getWebDriver());
         CartPage cartPage=new CartPage(getWebDriver());
 
         if(!productDetailsPage.isProductSoldOut()){
@@ -49,14 +53,14 @@ public class ValidateCartContentsTest extends BaseTest{
         }else{
             Assert.fail("Product Out of Stock");
         }
-
         cartModal.clickAddToCart();
+        double expectedTotalPrice= productPrice*cartPage.getQuantityOfAddedProduct();
+        double actualTotalPrice=cartPage.getProductAddedPrice();
 
-        Assert.assertTrue(cartPage.getAddedProductName().contains(productDetailsPage.getProductName()));
-        Assert.assertTrue((cartPage.getSizeOfAddedProduct().contains(productDetailsPage.getSizeSelected())));
-        Assert.assertEquals(cartPage.getQuantityOfAddedProduct(),productDetailsPage.getQuantitySelected());
-        Assert.assertEquals(cartPage.getProductAddedPrice(),productDetailsPage.getProductPrice());
-
+        Assert.assertTrue(cartPage.getAddedProductName().contains(productName));
+        Assert.assertTrue(cartPage.getSizeOfAddedProduct().contains(productSize));
+        Assert.assertEquals(cartPage.getQuantityOfAddedProduct(),productQuantity);
+        Assert.assertEquals(actualTotalPrice,expectedTotalPrice);
     }
 
 

@@ -22,7 +22,7 @@ public class ProductDetailsPage extends BasePage{
     @FindBy(xpath = "/html[1]/body[1]/main[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[3]/quantity-input[1]/input[1]")
     private WebElement quantitySelected;
 
-    @FindBy(xpath = "//*[@id=\"price-template--15328405717213__main\"]/div/div/div[1]/span[2]")
+    @FindBy(xpath = "//span[@class='price-item price-item--regular']")
     private WebElement productPrice;
 
     public String getProductName(){
@@ -31,12 +31,13 @@ public class ProductDetailsPage extends BasePage{
 
     public double getProductPrice(){
         String getPrice= webActions.getText(productPrice);
-        String numberString = getPrice.replaceAll("[^0-9.]", "");
-        return Double.parseDouble(numberString);
+        String numericString = getPrice.replace("Rs. ", "");
+        double price=Double.parseDouble(numericString);
+        return price;
     }
 
     public int getQuantitySelected(){
-        return Integer.parseInt(webActions.getText(quantitySelected).trim());
+        return Integer.parseInt(quantitySelected.getAttribute("value"));
     }
     public String getSizeSelected() {
         WebElement selectedRadio = null;
