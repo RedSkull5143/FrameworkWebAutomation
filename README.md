@@ -26,10 +26,26 @@ Developing an automated testing suite for an e-commerce web application at [http
     - Test adding, removing, and updating items in the shopping cart.
     - Validate price calculations and checkout procedures.
 
-### Build
-```shell
-./gradlew clean build
-```
+## Setup and Execution
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/RedSkull5143/FrameworkWebAutomation
+    ```
+
+2. **Navigate to the project directory:**
+    ```bash
+    cd FrameworkWebAutomation
+    ```
+
+3. **Build the project using Gradle:**
+    ```bash
+    gradle clean build
+    ```
+
+4. **Run the tests using TestNG:**
+    ```bash
+    gradle test
+    ```
 
 ## Tech Stack
 - **Core Language:** Java
