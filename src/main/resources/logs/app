@@ -1,0 +1,4 @@
+21:08:56.085 [Test worker]INFO  com.omshinde.capstone.AddAvailableProductToCartTest - Executing verifyUserIsAbleToAddProductToCart: Verifying that a user can add a product to the cart when it is in stock
+21:08:56.132 [Test worker]INFO  SearchLogger - Search Content : Bell Dress
+21:08:58.009 [Test worker]DEBUG CartLogger - Navigated to Product Details Page
+21:09:03.084 [Test worker]INFO  CartLogger - Product Added to the Cart
