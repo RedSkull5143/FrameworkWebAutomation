@@ -2,9 +2,14 @@ package com.omshinde.capstone.pages.accounts;
 
 import com.omshinde.capstone.models.User;
 import com.omshinde.capstone.pages.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginPage extends BasePage {
 
@@ -34,6 +39,11 @@ public class LoginPage extends BasePage {
         buttonActions.click(signInBtnEle);
         return new ProfilePage(webDriver);
     }
+
+    public ForgotPasswordPage navToForgotPasswordPage(){
+        buttonActions.click(forgotPasswordLinkEle);
+        return new ForgotPasswordPage(webDriver);
+    }
     public RegistrationPage navToRegisterationPage(){
         buttonActions.click(createAccountLinkEle);
         return new RegistrationPage(webDriver);
@@ -41,5 +51,12 @@ public class LoginPage extends BasePage {
 
     public String getErrorMessage(){
         return webActions.getText(errorBoxEle);
+    }
+
+    public String forgotPasswordMessage(){
+        WebDriverWait webDriverWait=new WebDriverWait(webDriver, Duration.ofSeconds(10));
+        WebElement message= webDriver.findElement(By.xpath("//*[@id=\"MainContent\"]/div/div[2]/h3"));
+        webDriverWait.until(ExpectedConditions.visibilityOf(message));
+        return message.getText();
     }
 }
