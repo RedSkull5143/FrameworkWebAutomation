@@ -2,6 +2,8 @@ package com.omshinde.capstone.components;
 
 import com.omshinde.capstone.modals.SearchModal;
 import com.omshinde.capstone.pages.BasePage;
+import com.omshinde.capstone.pages.accounts.LoginPage;
+import com.omshinde.capstone.pages.accounts.ProfilePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -12,6 +14,10 @@ public class HeaderComponent extends BasePage {
 
     @FindBy(xpath = "//*[@id=\"shopify-section-header\"]/sticky-header/header/div/details-modal/details/summary/span")
     private WebElement searchIconEle;
+
+    @FindBy(xpath = "//*[@id=\"shopify-section-header\"]/sticky-header/header/div/a[1]")
+    private WebElement profileBtnEle;
+
 
     public SearchModal clickSearchBtn(){
         buttonActions.click(searchIconEle);
@@ -31,7 +37,15 @@ public class HeaderComponent extends BasePage {
         }
         return count;
     }
+    public LoginPage navToLoginPage(){
+        buttonActions.click(profileBtnEle);
+        return new LoginPage(webDriver);
+    }
 
+    public ProfilePage navToProfilePage(){
+        buttonActions.click(profileBtnEle);
+        return new ProfilePage(webDriver);
+    }
 
     public HeaderComponent(WebDriver webDriver) {
         super(webDriver);

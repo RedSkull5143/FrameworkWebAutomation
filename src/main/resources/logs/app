@@ -2,3 +2,12 @@
 21:08:56.132 [Test worker]INFO  SearchLogger - Search Content : Bell Dress
 21:08:58.009 [Test worker]DEBUG CartLogger - Navigated to Product Details Page
 21:09:03.084 [Test worker]INFO  CartLogger - Product Added to the Cart
+
+22:05:14.498 [Test worker]INFO  com.omshinde.capstone.AddAvailableProductToCartTest - Executing verifyThatCartCountIsIncreasedAfterAddingProductToCart: Verifying that the cart count is increased after adding a product to the cart
+22:05:14.547 [Test worker]INFO  SearchLogger - Search content: Bell Dress
+22:05:16.411 [Test worker]DEBUG CartLogger - Navigated to product details page.
+22:05:21.095 [Test worker]INFO  CartLogger - Cart count increased successfully.
+22:05:23.140 [Test worker]INFO  com.omshinde.capstone.AddAvailableProductToCartTest - Executing verifyUserIsAbleToAddProductToCart: Verifying that a user can add a product to the cart when it is in stock
+22:05:23.141 [Test worker]INFO  SearchLogger - Search Content : Bell Dress
+22:05:25.656 [Test worker]DEBUG CartLogger - Navigated to Product Details Page
+22:05:30.282 [Test worker]INFO  CartLogger - Product Added to the Cart
