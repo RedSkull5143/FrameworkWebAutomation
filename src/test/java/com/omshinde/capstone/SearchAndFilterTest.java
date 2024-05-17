@@ -13,11 +13,11 @@ public class SearchAndFilterTest extends BaseTest{
     public void searchAndFilterProductAccordingToPriceRange() throws InterruptedException {
         SearchContent searchContent= SearchContent.builder().build().init();
         HomePage homePage=new HomePage(getWebDriver());
-        SearchResultPage searchResultPage = homePage.getHeader().clickSearchBtn().searchProduct(searchContent.getInput());
+        homePage.getHeader().clickSearchBtn().searchProduct(searchContent.getInput());
         Categories categories = new Categories(getWebDriver());
         categories.openFilterModal().searchByPrice();
 
-        Assert.assertTrue(categories.openFilterModal().searchByPrice(), "All products should be within the price range.");
+        Assert.assertTrue(categories.openFilterModal().searchByPrice(), "Products should be within the specified price range after applying the price filter.");
 
     }
 }
