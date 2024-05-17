@@ -19,7 +19,8 @@ public class SearchResultPage extends BasePage{
     @FindBy(xpath = "//*[@id=\"ProductCountDesktop\"][1]")
     private WebElement resultsCount;
 
-    List<WebElement> productsList=allProducts.findElements(By.xpath("//*[@id=\"product-grid\"]/ul/li/div/div[1]/div/h3"));
+    List<WebElement> productsHeadingList = allProducts.findElements(By.xpath("//*[@id=\"product-grid\"]/ul/li/div/div[1]/div/h3"));
+
 
     @FindBy(xpath = "//*[@id=\"product-grid\"]/ul/li/div/div[1]/div/h3")
     private WebElement productName;
@@ -35,7 +36,7 @@ public class SearchResultPage extends BasePage{
     }
 
     public ProductDetailsPage clickToViewProductByIndex(int index){
-        productsList.get(index).click();
+        productsHeadingList.get(index).click();
         return new ProductDetailsPage(webDriver);
     }
 
