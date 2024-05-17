@@ -1,5 +1,6 @@
 package com.omshinde.capstone.pages;
 
+import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,6 +14,10 @@ public class SearchResultPage extends BasePage{
 
     @FindBy(xpath = "//*[@id=\"product-grid\"]/ul")
     private WebElement allProducts;
+
+    @Getter
+    @FindBy(xpath = "//*[@id=\"ProductCountDesktop\"][1]")
+    private WebElement resultsCount;
 
     List<WebElement> productsList=allProducts.findElements(By.xpath("//*[@id=\"product-grid\"]/ul/li/div/div[1]/div/h3"));
 
@@ -37,6 +42,7 @@ public class SearchResultPage extends BasePage{
     public String getProductName(){
         return webActions.getText(productName);
     }
+
     public SearchResultPage(WebDriver webDriver) {
         super(webDriver);
     }

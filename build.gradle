@@ -33,5 +33,8 @@ dependencies {
 }
 
 test {
-    useTestNG()
+    useTestNG() {
+        parallel 'tests'
+        threadCount 2
+    }
 }

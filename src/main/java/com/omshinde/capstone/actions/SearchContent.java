@@ -40,6 +40,13 @@ public class SearchContent {
                 .input("Jacket")
                 .build();
     }
+
+    public SearchContent specialCharacters(){
+        return SearchContent.builder()
+                .input("%&$")
+                .build();
+    }
+
     public String selectJacket(){
         return "Reasonable Jacket";
     }
