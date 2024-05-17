@@ -32,22 +32,23 @@ public class FilterByPriceModal extends BasePage {
         textBox.type(endPrice,input);
     }
 
-    public void searchByPrice() throws InterruptedException {
+    public boolean searchByPrice() throws InterruptedException {
         setStartPrice(500);
         setEndPrice(800);
         Actions actions = new Actions(webDriver);
         actions.doubleClick(head).perform();
         Thread.sleep(5000);
-        boolean isPriceInRange = isPriceInRange(getStartPriceValue(), getEndPriceValue());
+        boolean isPriceInRange = isInRange(getStartPriceValue(), getEndPriceValue());
         if (isPriceInRange) {
             System.out.println("Products found within the specified price range.");
         } else {
             System.out.println("No products found within the specified price range.");
         }
+        return isPriceInRange;
     }
 
 
-    public boolean isPriceInRange(int startPrice, int endPrice) {
+    public boolean isInRange(int startPrice, int endPrice) {
         WebElement allProducts = webDriver.findElement(By.xpath("//*[@id=\"product-grid\"]/ul"));
         List<WebElement> productsPriceList = allProducts.findElements(By.xpath("//*[@id=\"product-grid\"]/ul/li/div/div[1]/div/div/div/div/span[2]"));
         Pattern pattern = Pattern.compile("\\d+");
