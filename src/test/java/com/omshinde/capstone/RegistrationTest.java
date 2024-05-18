@@ -9,7 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class RegistrationTest extends BaseTest{
-    @Test(testName = "VerifyUserRegistrationSuccess",description = "Verify that a new user is able to register on the website by creating an account and accessing their profile page.")
+    @Test(testName = "VerifyUserRegistrationSuccess",description = "Verify that a new user is able to register on the website by creating an account and accessing their profile page.", groups = "register")
     public void VerifyUserRegistrationSuccess(){
         //arrange
         User user= User.builder().build().init();
@@ -25,7 +25,7 @@ public class RegistrationTest extends BaseTest{
         Assert.assertTrue(accountDetails.contains(user.getFirst_name()));
     }
 
-    @Test(testName = "VerifyRegistrationWithEmailRequired", description = "Verifies that the user is unable to register without providing an email address by attempting to create an account with an empty email field.")
+    @Test(testName = "VerifyRegistrationWithEmailRequired", description = "Verifies that the user is unable to register without providing an email address by attempting to create an account with an empty email field.", groups = "register")
     public void verifyThatUserIsNotAbleToRegisterWithEmptyEmail(){
         //arrange
         User user= User.builder().build().userWithoutEmail();
@@ -42,7 +42,7 @@ public class RegistrationTest extends BaseTest{
 
     }
 
-    @Test(testName = "RegistrationFailsWithEmptyPassword", description = "Validates that the user is prevented from registering without providing a password by attempting to create an account with an empty password field.")
+    @Test(testName = "RegistrationFailsWithEmptyPassword", description = "Validates that the user is prevented from registering without providing a password by attempting to create an account with an empty password field.", groups = "register")
     public void verifyThatUserIsNotAbleToRegisterWithEmptyPassword(){
         //arrange
         User user= User.builder().build().userWithoutPassword();
