@@ -13,6 +13,9 @@ import java.time.Duration;
 
 public class CartPage extends BasePage{
 
+    @FindBy(xpath = "//button[@id='checkout']")
+    private WebElement checkOutBtn;
+
     @FindBy(xpath = "//*[@id=\"shopify-section-template--15328405520605__cart-items\"]/cart-items/div[1]/h1")
     private WebElement cartHeading;
 
@@ -55,9 +58,11 @@ public class CartPage extends BasePage{
         return new CartPage(webDriver);
     }
 
-    public CartPage(WebDriver webDriver) {
-        super(webDriver);
+    public BillingPage clickCheckOutBtn(){
+        buttonActions.click(checkOutBtn);
+        return new BillingPage(webDriver);
     }
+
     public boolean isCartEmpty() {
         try {
             WebDriverWait webDriverWait=new WebDriverWait(webDriver, Duration.ofSeconds(2));
@@ -67,5 +72,9 @@ public class CartPage extends BasePage{
         } catch (NoSuchElementException e) {
             return false;
         }
+    }
+
+    public CartPage(WebDriver webDriver) {
+        super(webDriver);
     }
 }
