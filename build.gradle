@@ -13,29 +13,37 @@ dependencies {
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 
-    //lambook
+    // Lombok
     implementation 'org.projectlombok:lombok:1.18.32'
     annotationProcessor 'org.projectlombok:lombok:1.18.32'
 
-    //Selenium
-    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.20.0'
+    // Selenium
+    implementation 'org.seleniumhq.selenium:selenium-java:4.20.0'
 
-    //log4j
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '3.0.0-beta2'
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '3.0.0-beta2'
+    // Log4j
+    implementation 'org.apache.logging.log4j:log4j-core:3.0.0-beta2'
+    implementation 'org.apache.logging.log4j:log4j-api:3.0.0-beta2'
 
-    //javafaker
-    implementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
+    // Javafaker
+    implementation 'com.github.javafaker:javafaker:1.0.2'
 
-    //TestNG
-    testImplementation group: 'org.testng', name: 'testng', version: '7.10.1'
+    // TestNG
+    testImplementation 'org.testng:testng:7.10.1'
 
+    // Allure
+    testImplementation 'io.qameta.allure:allure-testng:2.20.1'
 }
 
 test {
-    systemProperties System.properties
     useTestNG() {
-        parallel 'methods'
-        threadCount Integer.parseInt(System.getProperty("sessions", "2")); //max num of browser
-        includeGroups System.getProperty("tags", "register")    }
+        parallel = 'methods'
+        threadCount = Integer.parseInt(System.getProperty('sessions', '2'))
+        includeGroups System.getProperty('tags', 'register')
+    }
+    systemProperty 'allure.results.directory', 'build/allure-results'
+}
+
+task allureReport(type: Exec) {
+    dependsOn test
+    commandLine 'allure', 'generate', 'build/allure-results', '-o', 'build/reports/allure-report'
 }
