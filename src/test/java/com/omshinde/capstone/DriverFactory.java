@@ -1,5 +1,6 @@
 package com.omshinde.capstone;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -25,6 +26,7 @@ public class DriverFactory {
         public WebDriver getDriver() {
             if (driverThreadLocal.get() == null) {
                 // Initialize the WebDriver instance, for example, with ChromeDriver
+                WebDriverManager.chromedriver().setup();
                 WebDriver driver = new ChromeDriver();
                 driverThreadLocal.set(driver);
             }
