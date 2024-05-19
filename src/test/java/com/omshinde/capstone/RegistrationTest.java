@@ -5,11 +5,15 @@ import com.omshinde.capstone.pages.HomePage;
 import com.omshinde.capstone.pages.accounts.LoginPage;
 import com.omshinde.capstone.pages.accounts.ProfilePage;
 import com.omshinde.capstone.pages.accounts.RegistrationPage;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@Feature("Registration")
 public class RegistrationTest extends BaseTest{
     @Test(testName = "VerifyUserRegistrationSuccess",description = "Verify that a new user is able to register on the website by creating an account and accessing their profile page.", groups = "register")
+    @Story("User Registration Success")
     public void VerifyUserRegistrationSuccess(){
         //arrange
         User user= User.builder().build().init();
@@ -26,6 +30,7 @@ public class RegistrationTest extends BaseTest{
     }
 
     @Test(testName = "VerifyRegistrationWithEmailRequired", description = "Verifies that the user is unable to register without providing an email address by attempting to create an account with an empty email field.", groups = "register")
+    @Story("User Registration with Email Required")
     public void verifyThatUserIsNotAbleToRegisterWithEmptyEmail(){
         //arrange
         User user= User.builder().build().userWithoutEmail();
@@ -42,7 +47,8 @@ public class RegistrationTest extends BaseTest{
 
     }
 
-    @Test(testName = "RegistrationFailsWithEmptyPassword", description = "Validates that the user is prevented from registering without providing a password by attempting to create an account with an empty password field.", groups = "register")
+    @Test(testName = "RegistrationFailsWithEmptyPassword", description = "Validates that the user is prevented from registering without providing a password by attempting to create an account with an empty password field.")
+    @Story("User Registration Fails with Empty Password")
     public void verifyThatUserIsNotAbleToRegisterWithEmptyPassword(){
         //arrange
         User user= User.builder().build().userWithoutPassword();
