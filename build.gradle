@@ -37,21 +37,20 @@ dependencies {
 
 }
 
-test {
-    useTestNG() {
-        parallel = 'methods'
-        threadCount = Integer.parseInt(System.getProperty('sessions', '2'))
-        includeGroups System.getProperty('tags', 'register')
+test{
+    useTestNG(){
+        parallel = "methods"
+        threadCount Integer.parseInt(System.getProperty("sessions", "2")); //max num of browser
+        includeGroups System.getProperty("tags", "register")
     }
-    systemProperty 'allure.results.directory', 'build/allure-results'
 }
 
-task allureReport(type: Exec) {
-    dependsOn test
-    commandLine 'allure', 'generate', 'build/allure-results', '-o', 'build/reports/allure-report'
-}
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-    options.release=11
-}
+//task allureReport(type: Exec) {
+//    dependsOn test
+//    commandLine 'allure', 'generate', 'build/allure-results', '-o', 'build/reports/allure-report'
+//}
+//
+//tasks.withType(JavaCompile) {
+//    options.encoding = 'UTF-8'
+//    options.release=11
+//}
