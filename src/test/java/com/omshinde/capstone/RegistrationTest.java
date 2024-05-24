@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 @Feature("Registration")
 public class RegistrationTest extends BaseTest{
-    @Test(testName = "VerifyUserRegistrationSuccess",description = "Verify that a new user is able to register on the website by creating an account and accessing their profile page.", groups = "register")
+    @Test(testName = "VerifyUserRegistrationSuccess",description = "Verify that a new user is able to register on the website by creating an account and accessing their profile page.", groups = "smoke")
     @Story("User Registration Success")
     public void VerifyUserRegistrationSuccess(){
         //arrange
@@ -29,7 +29,7 @@ public class RegistrationTest extends BaseTest{
         Assert.assertTrue(accountDetails.contains(user.getFirst_name()));
     }
 
-    @Test(testName = "VerifyRegistrationWithEmailRequired", description = "Verifies that the user is unable to register without providing an email address by attempting to create an account with an empty email field.", groups = "register")
+    @Test(testName = "VerifyRegistrationWithEmailRequired", description = "Verifies that the user is unable to register without providing an email address by attempting to create an account with an empty email field.", groups = "smoke")
     @Story("User Registration with Email Required")
     public void verifyThatUserIsNotAbleToRegisterWithEmptyEmail(){
         //arrange
