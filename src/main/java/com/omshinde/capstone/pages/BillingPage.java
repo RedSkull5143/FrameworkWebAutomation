@@ -1,5 +1,6 @@
 package com.omshinde.capstone.pages;
 
+import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+
 
 public class BillingPage extends BasePage {
 
@@ -46,6 +48,9 @@ public class BillingPage extends BasePage {
 
     @FindBy(xpath = "//*[@id=\"tipping_list-tipping_list_options-collapsible\"]/div/div/div/div[2]/div/button")
     private WebElement updateTipBtn;
+
+    @FindBy(css = "div[class='_1fragem2i _1fragemnw iZ894'] p[class='_1x52f9s1 _1fragemnw _1x52f9sp _1fragempz']")
+    private WebElement productName;
 
     @FindBy(xpath = "//*[@id=\"basic\"]/div/div[2]/label")
     private WebElement codBtn;
@@ -147,12 +152,18 @@ public class BillingPage extends BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(codBtn)).click();
     }
 
-    public void completeOrder() {
+    public HomePage completeOrder() {
         wait.until(ExpectedConditions.elementToBeClickable(completeOrderBtn)).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"checkout-main\"]/div/div/div[2]/div/div[2]/div[1]/a"))).click();
+        return new HomePage(webDriver);
     }
 
     public String getConfirmationMessage() {
         wait.until(ExpectedConditions.visibilityOf(confirmationMessage));
         return webActions.getText(confirmationMessage);
+    }
+
+    public String getProductName(){
+        return webActions.getText(productName);
     }
 }

@@ -36,21 +36,19 @@ dependencies {
 //    implementation 'io.github.bonigarcia:webdrivermanager:5.3.1'
 
 }
-
-test{
-    test {
+ test {
         outputs.upToDateWhen {false}
         systemProperties System.properties
         useTestNG() {
-            parallel = "methods"
-            threadCount Integer.parseInt(System.getProperty("sessions", "2")); //max num of browser
-            includeGroups System.getProperty("tags", "smoke")
-            testLogging.showStandardStreams = true
-            useDefaultListeners true
-            outputDirectory = file("$buildDir/" + System.getProperty('tags', 'smoke'))
+//            parallel = "methods"
+//            threadCount Integer.parseInt(System.getProperty("sessions", "2")); //max num of browser
+//            includeGroups System.getProperty("tags", "smoke")
+//            systemProperty 'headless.mode',
+//            testLogging.showStandardStreams = true
+//            useDefaultListeners true
+//            outputDirectory = file("$buildDir/" + System.getProperty('tags', 'smoke'))
         }
-    }
-}
+ }
 
 task allureReport(type: Exec) {
     dependsOn test
