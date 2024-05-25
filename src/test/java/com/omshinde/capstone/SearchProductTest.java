@@ -88,5 +88,20 @@ public class SearchProductTest extends BaseTest{
         Assert.assertTrue(isProductAvailable, "Search results should be relevant to the query or a proper message should be displayed.");
     }
 
+    // Test verifies product opened is same as product clicked
+    @Test(testName = "testProductOpenedIsSameAsProductClicked", description = "Product opened should be the same as the product clicked")
+    @Story("User verifies product opened is same as product clicked")
+    public void testProductOpenedIsSameAsProductClicked() {
+        // Initialize test data and pages
+        SearchContent searchContent = SearchContent.builder().build().bellDress();
+        HomePage homePage = new HomePage(getWebDriver());
+
+        // Perform search and click on the first product
+        SearchResultPage searchResultPage = homePage.getHeader().clickSearchBtn().searchProduct(searchContent.getInput());
+        ProductDetailsPage productDetailsPage = searchResultPage.clickToViewProductByIndex(0);
+
+        // Verify product opened is the same as the product clicked
+        Assert.assertEquals(productDetailsPage.getProductName(), searchContent.getInput(), "Product opened should be the same as the product clicked");
+    }
 
 }
