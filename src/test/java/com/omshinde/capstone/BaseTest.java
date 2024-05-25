@@ -22,13 +22,13 @@ public class BaseTest {
         launch(driver);
     }
 
-//    @AfterMethod(alwaysRun = true)
-//    public synchronized void tearDown(ITestResult result) {
-//        if (ITestResult.FAILURE == result.getStatus()) {
-//            captureScreenshot(result.getMethod().getMethodName());
-//        }
-//        DriverFactory.getInstance().quitDriver();
-//    }
+    @AfterMethod(alwaysRun = true)
+    public synchronized void tearDown(ITestResult result) {
+        if (ITestResult.FAILURE == result.getStatus()) {
+            captureScreenshot(result.getMethod().getMethodName());
+        }
+        DriverFactory.getInstance().quitDriver();
+    }
 
     @Attachment(value = "Screenshot on failure", type = "image/png")
     public byte[] captureScreenshot(String screenshotName) {

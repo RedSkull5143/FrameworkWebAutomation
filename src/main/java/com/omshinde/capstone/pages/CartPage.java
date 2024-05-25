@@ -74,6 +74,14 @@ public class CartPage extends BasePage{
         }
     }
 
+    public boolean isCheckoutButtonPresent() {
+        // Find the checkout button element
+        WebElement checkoutButton = webDriver.findElement(By.xpath("//button[@id='checkout']"));
+
+        // Return true if the button element is found, otherwise return false
+        return checkoutButton != null;
+    }
+
     public CartPage(WebDriver webDriver) {
         super(webDriver);
     }

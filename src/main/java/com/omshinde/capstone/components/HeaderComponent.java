@@ -2,6 +2,7 @@ package com.omshinde.capstone.components;
 
 import com.omshinde.capstone.modals.SearchModal;
 import com.omshinde.capstone.pages.BasePage;
+import com.omshinde.capstone.pages.CartPage;
 import com.omshinde.capstone.pages.accounts.LoginPage;
 import com.omshinde.capstone.pages.accounts.ProfilePage;
 import org.openqa.selenium.By;
@@ -17,6 +18,9 @@ public class HeaderComponent extends BasePage {
 
     @FindBy(xpath = "//*[@id=\"shopify-section-header\"]/sticky-header/header/div/a[1]")
     private WebElement profileBtnEle;
+
+    @FindBy(id = "cart-icon-bubble")
+    private WebElement cartBtnEle;
 
 
     public SearchModal clickSearchBtn(){
@@ -45,6 +49,11 @@ public class HeaderComponent extends BasePage {
     public ProfilePage navToProfilePage(){
         buttonActions.click(profileBtnEle);
         return new ProfilePage(webDriver);
+    }
+
+    public CartPage navToCartPage(){
+        buttonActions.click(cartBtnEle);
+        return new CartPage(webDriver);
     }
 
     public HeaderComponent(WebDriver webDriver) {
