@@ -49,4 +49,5 @@ public class ForgotPasswordTest extends BaseTest {
         String message = loginPage.forgotPasswordMessage();
         Assert.assertTrue(message.contains("We've sent you an email with a link to update your password."));
     }
+
 }
