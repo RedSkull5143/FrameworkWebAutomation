@@ -72,4 +72,21 @@ public class SearchProductTest extends BaseTest{
         Assert.assertTrue((searchContent.getInput().contains(productDetailsPage.getProductName())));
     }
 
+    // Test verifies user can search with special characters
+    @Test(testName = "testUserCanSearchWithSpecialCharacters", description = "User is able to search with special characters")
+    @Story("User searches for a product using special characters")
+    public void testUserCanSearchWithSpecialCharacters() {
+        // Initialize test data and pages
+        SearchContent searchContent = SearchContent.builder().build().specialCharacters();
+        HomePage homePage = new HomePage(getWebDriver());
+
+        // Perform search and verify search result
+        SearchResultPage searchResultPage = homePage.getHeader().clickSearchBtn().searchProduct(searchContent.getInput());
+        boolean isProductAvailable = !searchResultPage.getProductName().isEmpty();
+
+        Assert.assertTrue(searchResultPage.getResultsCount().isDisplayed(), "Search results page should load without errors.");
+        Assert.assertTrue(isProductAvailable, "Search results should be relevant to the query or a proper message should be displayed.");
+    }
+
+
 }
