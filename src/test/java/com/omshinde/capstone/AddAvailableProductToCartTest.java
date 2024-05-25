@@ -16,7 +16,6 @@ import org.testng.annotations.Test;
 @Epic("E-commerce Platform")
 @Feature("Shopping Cart Management")
 @Story("User adds products to cart")
-
 public class AddAvailableProductToCartTest extends BaseTest {
 
     // Logger for general test logging
