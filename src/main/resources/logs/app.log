@@ -1,0 +1,78 @@
+12:08:04.829 [Test worker]INFO  com.omshinde.capstone.testAuthentications.ForgotPasswordTest - Executing testForgotPasswordSuccessful: Verifying successful submission of password reset request
+____________________________________________________________
+12:08:05.441 [Test worker]INFO  UserLogger - User initialized with email: ellamae.jacobson@yahoo.com
+____________________________________________________________
+12:08:05.455 [Test worker]INFO  NavigationLogger - Navigating to Login Page
+____________________________________________________________
+12:08:06.933 [Test worker]INFO  NavigationLogger - Navigating to Forgot Password Page
+____________________________________________________________
+12:08:07.106 [Test worker]INFO  NavigationLogger - Submitting password reset request
+____________________________________________________________
+12:08:08.651 [Test worker]INFO  com.omshinde.capstone.testAuthentications.ForgotPasswordTest - Success message verified: We've sent you an email with a link to update your password.
+____________________________________________________________
+12:08:13.575 [Test worker]INFO  com.omshinde.capstone.testAuthentications.ForgotPasswordTest - Executing testRedirectUserToForgotPasswordPage: Validating user redirection to the Forgot Password page
+____________________________________________________________
+12:08:13.575 [Test worker]INFO  NavigationLogger - Navigating to Login Page
+____________________________________________________________
+12:08:14.731 [Test worker]INFO  NavigationLogger - Navigating to Forgot Password Page
+____________________________________________________________
+12:08:14.935 [Test worker]INFO  com.omshinde.capstone.testAuthentications.ForgotPasswordTest - Reset Password page heading verified successfully
+____________________________________________________________
+12:17:30.088 [Test worker]INFO  com.omshinde.capstone.testAuthentications.ForgotPasswordTest - Executing testForgotPasswordSuccessful: Verifying successful submission of password reset request
+____________________________________________________________
+12:17:30.487 [Test worker]INFO  UserLogger - User initialized with email: chan.crona@hotmail.com
+____________________________________________________________
+12:17:30.500 [Test worker]INFO  NavigationLogger - Navigating to Login Page
+____________________________________________________________
+12:17:31.632 [Test worker]INFO  NavigationLogger - Navigating to Forgot Password Page
+____________________________________________________________
+12:17:31.818 [Test worker]INFO  NavigationLogger - Submitting password reset request
+____________________________________________________________
+12:17:33.313 [Test worker]INFO  com.omshinde.capstone.testAuthentications.ForgotPasswordTest - Success message verified: We've sent you an email with a link to update your password.
+____________________________________________________________
+12:17:35.385 [Test worker]INFO  com.omshinde.capstone.testAuthentications.ForgotPasswordTest - Executing testRedirectUserToForgotPasswordPage: Validating user redirection to the Forgot Password page
+____________________________________________________________
+12:17:35.385 [Test worker]INFO  NavigationLogger - Navigating to Login Page
+____________________________________________________________
+12:17:37.119 [Test worker]INFO  NavigationLogger - Navigating to Forgot Password Page
+____________________________________________________________
+12:17:37.353 [Test worker]INFO  com.omshinde.capstone.testAuthentications.ForgotPasswordTest - Reset Password page heading verified successfully
+____________________________________________________________
+12:18:21.583 [Test worker]INFO  com.omshinde.capstone.testCart.RemoveProductTest - Initializing search content: SearchContent(input=Robe Dress)
+____________________________________________________________
+12:18:21.598 [Test worker]INFO  com.omshinde.capstone.testCart.RemoveProductTest - Navigated to the Home page
+____________________________________________________________
+12:18:23.282 [Test worker]INFO  com.omshinde.capstone.testCart.RemoveProductTest - Performed search for product: Robe Dress
+____________________________________________________________
+12:18:24.413 [Test worker]INFO  com.omshinde.capstone.testCart.RemoveProductTest - Navigated to product details page
+____________________________________________________________
+12:18:27.865 [Test worker]INFO  com.omshinde.capstone.testCart.RemoveProductTest - Added product to cart
+____________________________________________________________
+12:18:30.984 [Test worker]INFO  com.omshinde.capstone.testCart.RemoveProductTest - Clicked on Add to Cart button in modal
+____________________________________________________________
+12:18:31.187 [Test worker]INFO  com.omshinde.capstone.testCart.RemoveProductTest - Removed product from cart
+____________________________________________________________
+12:18:32.815 [Test worker]INFO  com.omshinde.capstone.testCart.RemoveProductTest - Cart is empty
+____________________________________________________________
+12:21:53.499 [Test worker]INFO  com.omshinde.capstone.testOrders.CheckOutPageTest - Initializing test data and pages
+____________________________________________________________
+12:21:53.558 [Test worker]INFO  com.omshinde.capstone.testOrders.CheckOutPageTest - Logging in with valid user credentials
+____________________________________________________________
+12:22:05.577 [Test worker]INFO  com.omshinde.capstone.testOrders.CheckOutPageTest - Product added to cart successfully
+____________________________________________________________
+12:22:07.206 [Test worker]INFO  com.omshinde.capstone.testOrders.CheckOutPageTest - Clicked on Add to Cart button in modal
+____________________________________________________________
+12:22:32.206 [Test worker]INFO  com.omshinde.capstone.testOrders.CheckOutPageTest - Navigating to the cart page
+____________________________________________________________
+12:22:34.006 [Test worker]INFO  com.omshinde.capstone.testOrders.CheckOutPageTest - Verified that the user cannot proceed to checkout with an empty cart
+____________________________________________________________
+12:25:05.525 [Test worker]INFO  com.omshinde.capstone.testOrders.OrderHistoryTest - Logging in with valid user credentials
+____________________________________________________________
+12:25:17.825 [Test worker]INFO  com.omshinde.capstone.testOrders.OrderHistoryTest - Product added to cart successfully
+____________________________________________________________
+12:25:35.956 [Test worker]INFO  com.omshinde.capstone.testOrders.OrderHistoryTest - Logging in with valid user credentials
+____________________________________________________________
+12:25:47.565 [Test worker]INFO  com.omshinde.capstone.testOrders.OrderHistoryTest - Product added to cart successfully
+____________________________________________________________
+12:25:59.515 [Test worker]INFO  com.omshinde.capstone.testOrders.OrderHistoryTest - Verified order history information of the user
+____________________________________________________________

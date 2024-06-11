@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN" strict="true">
     <Appenders>
-        <Appender type="Console" name="STDOUT">
-            <Layout type="PatternLayout"
-                    pattern="%d{HH:mm:ss.SSS} [%t]%-5level %logger{36} - %msg%n" />
-        </Appender>
-
-        <Appender type="File" name="file" fileName="G:\automation\CapstoneFrameWork\src\main\resources\logs\app">
-            <Layout type="PatternLayout"
-                    pattern="%d{HH:mm:ss.SSS} [%t]%-5level %logger{36} - %msg%n" />
-        </Appender>
+        <!-- Define a RollingFile appender with the desired pattern layout -->
+        <RollingFile name="RollingFile" fileName="G:\automation\CapstoneFrameWork\src\main\resources\logs\app.log"
+                     filePattern="G:\automation\CapstoneFrameWork\src\main\resources\logs\app.log.%i">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t]%-5level %logger{36} - %msg%n____________________________________________________________%n" />
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10 MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="10" />
+        </RollingFile>
     </Appenders>
 
-
     <Loggers>
+        <!-- Use the RollingFile appender for the root logger -->
         <Root level="all">
-            <AppenderRef ref="file" />
-            <AppenderRef ref="STDOUT" />
+            <AppenderRef ref="RollingFile" />
         </Root>
     </Loggers>
 </Configuration>

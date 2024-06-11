@@ -11,6 +11,8 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Test class for user registration functionality.
@@ -18,6 +20,9 @@ import org.testng.annotations.Test;
 @Epic("User Management")
 @Feature("Registration")
 public class RegistrationTest extends BaseTest {
+
+    // Logger for logging in this class
+    private static final Logger logger = LogManager.getLogger(RegistrationTest.class);
 
     /**
      * Verifies that a new user is able to register successfully.
@@ -27,16 +32,24 @@ public class RegistrationTest extends BaseTest {
     public void VerifyUserRegistrationSuccess(){
         // Arrange
         User user= User.builder().build().init();
+        logger.info("Initializing user for registration: {}", user);
         HomePage homePage=new HomePage(getWebDriver());
         LoginPage loginPage = homePage.getHeader().navigateToLoginPage();
+        logger.info("Navigated to Login page");
 
         // Act
-        loginPage.navigateToRegistrationPage().createAccount(user);
+        RegistrationPage registrationPage = loginPage.navigateToRegistrationPage();
+        logger.info("Navigated to Registration page");
+        registrationPage.createAccount(user);
+        logger.info("Account created successfully");
+
         ProfilePage profilePage = homePage.getHeader().navigateToProfilePage();
+        logger.info("Navigated to Profile page");
 
         // Assert
         String accountDetails= profilePage.getAccountDetails();
         Assert.assertTrue(accountDetails.contains(user.getFirst_name()));
+        logger.info("Account details verified: {}", accountDetails);
     }
 
     /**
@@ -47,17 +60,21 @@ public class RegistrationTest extends BaseTest {
     public void verifyThatUserIsNotAbleToRegisterWithEmptyEmail(){
         // Arrange
         User user= User.builder().build().userWithoutEmail();
+        logger.info("Initializing user without email: {}", user);
         HomePage homePage=new HomePage(getWebDriver());
         LoginPage loginPage = homePage.getHeader().navigateToLoginPage();
-        RegistrationPage registrationPage=new RegistrationPage(getWebDriver());
+        logger.info("Navigated to Login page");
 
         // Act
-        loginPage.navigateToRegistrationPage().createAccount(user);
+        RegistrationPage registrationPage = loginPage.navigateToRegistrationPage();
+        logger.info("Navigated to Registration page");
+        registrationPage.createAccount(user);
+        logger.info("Account creation attempted");
 
         // Assert
         String errorMessage = registrationPage.errorMessage();
         Assert.assertTrue(errorMessage.contains("Email can't be blank"));
-
+        logger.info("Error message verified: {}", errorMessage);
     }
 
     /**
@@ -68,15 +85,20 @@ public class RegistrationTest extends BaseTest {
     public void verifyThatUserIsNotAbleToRegisterWithEmptyPassword(){
         // Arrange
         User user= User.builder().build().userWithoutPassword();
+        logger.info("Initializing user without password: {}", user);
         HomePage homePage=new HomePage(getWebDriver());
         LoginPage loginPage = homePage.getHeader().navigateToLoginPage();
-        RegistrationPage registrationPage=new RegistrationPage(getWebDriver());
+        logger.info("Navigated to Login page");
 
         // Act
-        loginPage.navigateToRegistrationPage().createAccount(user);
+        RegistrationPage registrationPage = loginPage.navigateToRegistrationPage();
+        logger.info("Navigated to Registration page");
+        registrationPage.createAccount(user);
+        logger.info("Account creation attempted");
 
         // Assert
         String errorMessage = registrationPage.errorMessage();
         Assert.assertTrue(errorMessage.contains("Password can't be blank"));
+        logger.info("Error message verified: {}", errorMessage);
     }
 }

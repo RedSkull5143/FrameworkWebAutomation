@@ -12,6 +12,8 @@ import org.testng.annotations.Test;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Epic: Cart Management
@@ -23,6 +25,9 @@ import io.qameta.allure.Story;
 @Feature("Product Removal")
 public class RemoveProductTest extends BaseTest {
 
+    // Logger for logging in this class
+    private static final Logger logger = LogManager.getLogger(RemoveProductTest.class);
+
     /**
      * Verifies the removal of a product from the cart.
      */
@@ -31,25 +36,33 @@ public class RemoveProductTest extends BaseTest {
     public void verifyProductRemovalFromCart(){
         // Arrange
         SearchContent searchContent = SearchContent.builder().build().bellDress();
+        logger.info("Initializing search content: {}", searchContent);
         HomePage homePage = new HomePage(getWebDriver());
+        logger.info("Navigated to the Home page");
 
         // Act
-        homePage.getHeader().clickSearchBtn().searchProduct(searchContent.getInput());
-        SearchResultPage searchResultPage = new SearchResultPage(getWebDriver());
+        SearchResultPage searchResultPage = homePage.getHeader().clickSearchBtn().searchProduct(searchContent.getInput());
+        logger.info("Performed search for product: {}", searchContent.getInput());
         ProductDetailsPage productDetailsPage = searchResultPage.clickToViewProductByName();
+        logger.info("Navigated to product details page");
+
         CartModal cartModal = new CartModal(getWebDriver());
         CartPage cartPage = new CartPage(getWebDriver());
 
         if(!productDetailsPage.isProductSoldOut()) {
             productDetailsPage.clickAddToCart();
+            logger.info("Added product to cart");
         } else {
             Assert.fail("Product Out of Stock");
         }
 
         cartModal.clickAddToCart();
+        logger.info("Clicked on Add to Cart button in modal");
         cartPage.removeProductFromCart(cartPage.getAddedProductName());
+        logger.info("Removed product from cart");
 
         // Assert
         Assert.assertTrue(cartPage.isCartEmpty());
+        logger.info("Cart is empty");
     }
 }

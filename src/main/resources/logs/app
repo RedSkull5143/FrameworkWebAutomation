@@ -71,3 +71,50 @@
 11:22:41.772 [Test worker]INFO  SearchLogger - Search Content: Robe Dress
 11:22:48.511 [Test worker]DEBUG CartLogger - Navigated to Product Details Page
 11:22:53.291 [Test worker]INFO  CartLogger - Product Added to the Cart
+12:03:38.821 [Test worker]INFO  com.omshinde.capstone.testAuthentications.ForgotPasswordTest - Executing testForgotPasswordSuccessful: Verifying successful submission of password reset request
+12:03:39.530 [Test worker]INFO  UserLogger - User initialized with email: marsha.bernier@yahoo.com
+12:03:39.556 [Test worker]INFO  NavigationLogger - Navigating to Login Page
+12:03:41.019 [Test worker]INFO  NavigationLogger - Navigating to Forgot Password Page
+12:03:41.201 [Test worker]INFO  NavigationLogger - Submitting password reset request
+12:03:42.677 [Test worker]INFO  com.omshinde.capstone.testAuthentications.ForgotPasswordTest - Success message verified: We've sent you an email with a link to update your password.
+12:03:45.656 [Test worker]INFO  com.omshinde.capstone.testAuthentications.ForgotPasswordTest - Executing testRedirectUserToForgotPasswordPage: Validating user redirection to the Forgot Password page
+12:03:45.656 [Test worker]INFO  NavigationLogger - Navigating to Login Page
+12:03:47.071 [Test worker]INFO  NavigationLogger - Navigating to Forgot Password Page
+12:03:47.273 [Test worker]INFO  com.omshinde.capstone.testAuthentications.ForgotPasswordTest - Reset Password page heading verified successfully
+12:05:39.597 [Test worker]INFO  com.omshinde.capstone.testAuthentications.ForgotPasswordTest - Executing testForgotPasswordSuccessful: Verifying successful submission of password reset request
+12:05:40.025 [Test worker]INFO  UserLogger - User initialized with email: barney.hoppe@yahoo.com
+12:05:40.038 [Test worker]INFO  NavigationLogger - Navigating to Login Page
+12:05:41.187 [Test worker]INFO  NavigationLogger - Navigating to Forgot Password Page
+12:05:41.375 [Test worker]INFO  NavigationLogger - Submitting password reset request
+12:05:42.893 [Test worker]INFO  com.omshinde.capstone.testAuthentications.ForgotPasswordTest - Success message verified: We've sent you an email with a link to update your password.
+12:05:45.949 [Test worker]INFO  com.omshinde.capstone.testAuthentications.ForgotPasswordTest - Executing testRedirectUserToForgotPasswordPage: Validating user redirection to the Forgot Password page
+12:05:45.950 [Test worker]INFO  NavigationLogger - Navigating to Login Page
+12:05:47.304 [Test worker]INFO  NavigationLogger - Navigating to Forgot Password Page
+12:05:47.511 [Test worker]INFO  com.omshinde.capstone.testAuthentications.ForgotPasswordTest - Reset Password page heading verified successfully
+12:11:19.626 [Test worker]INFO  com.omshinde.capstone.testAuthentications.ForgotPasswordTest - Executing testForgotPasswordSuccessful: Verifying successful submission of password reset request
+12:11:20.321 [Test worker]INFO  UserLogger - User initialized with email: myrtie.konopelski@gmail.com
+12:11:20.332 [Test worker]INFO  NavigationLogger - Navigating to Login Page
+12:11:21.855 [Test worker]INFO  NavigationLogger - Navigating to Forgot Password Page
+12:11:22.001 [Test worker]INFO  NavigationLogger - Submitting password reset request
+12:11:23.617 [Test worker]INFO  com.omshinde.capstone.testAuthentications.ForgotPasswordTest - Success message verified: We've sent you an email with a link to update your password.
+12:11:25.970 [Test worker]INFO  com.omshinde.capstone.testAuthentications.ForgotPasswordTest - Executing testRedirectUserToForgotPasswordPage: Validating user redirection to the Forgot Password page
+12:11:25.973 [Test worker]INFO  NavigationLogger - Navigating to Login Page
+12:11:27.083 [Test worker]INFO  NavigationLogger - Navigating to Forgot Password Page
+12:11:27.325 [Test worker]INFO  com.omshinde.capstone.testAuthentications.ForgotPasswordTest - Reset Password page heading verified successfully
+12:12:35.723 [Test worker]INFO  com.omshinde.capstone.testAuthentications.RegistrationTest - Initializing user for registration: User(first_name=August, last_name=Welch, emailID=kasey.reilly@hotmail.com, password=Pass123@)
+12:12:36.916 [Test worker]INFO  com.omshinde.capstone.testAuthentications.RegistrationTest - Navigated to Login page
+12:12:38.002 [Test worker]INFO  com.omshinde.capstone.testAuthentications.RegistrationTest - Navigated to Registration page
+12:12:40.907 [Test worker]INFO  com.omshinde.capstone.testAuthentications.RegistrationTest - Account created successfully
+12:12:42.283 [Test worker]INFO  com.omshinde.capstone.testAuthentications.RegistrationTest - Navigated to Profile page
+12:12:42.359 [Test worker]INFO  com.omshinde.capstone.testAuthentications.RegistrationTest - Account details verified: August Welch
+India
+12:12:44.999 [Test worker]INFO  com.omshinde.capstone.testAuthentications.RegistrationTest - Initializing user without email: User(first_name=Tory, last_name=Maggio, emailID=, password=Pass123@)
+12:12:46.225 [Test worker]INFO  com.omshinde.capstone.testAuthentications.RegistrationTest - Navigated to Login page
+12:12:47.422 [Test worker]INFO  com.omshinde.capstone.testAuthentications.RegistrationTest - Navigated to Registration page
+12:12:49.635 [Test worker]INFO  com.omshinde.capstone.testAuthentications.RegistrationTest - Account creation attempted
+12:12:49.701 [Test worker]INFO  com.omshinde.capstone.testAuthentications.RegistrationTest - Error message verified: Email can't be blank
+12:12:52.251 [Test worker]INFO  com.omshinde.capstone.testAuthentications.RegistrationTest - Initializing user without password: User(first_name=Rachelle, last_name=Dickens, emailID=olevia.koepp@gmail.com, password=)
+12:12:53.405 [Test worker]INFO  com.omshinde.capstone.testAuthentications.RegistrationTest - Navigated to Login page
+12:12:54.641 [Test worker]INFO  com.omshinde.capstone.testAuthentications.RegistrationTest - Navigated to Registration page
+12:12:56.373 [Test worker]INFO  com.omshinde.capstone.testAuthentications.RegistrationTest - Account creation attempted
+12:12:56.438 [Test worker]INFO  com.omshinde.capstone.testAuthentications.RegistrationTest - Error message verified: Password can't be blank
