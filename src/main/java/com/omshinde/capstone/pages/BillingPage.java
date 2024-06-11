@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class BillingPage extends BasePage {
@@ -99,7 +100,7 @@ public class BillingPage extends BasePage {
                 break;
             }
         }
-        Thread.sleep(2000);
+        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         double tipamount = 0;
         if (buttonWithAriaPressedTrue != null) {
             String buttonText = buttonWithAriaPressedTrue.getText();
@@ -137,7 +138,7 @@ public class BillingPage extends BasePage {
     }
 
     public double totalAmount() throws InterruptedException {
-        Thread.sleep(3000);
+        webDriver.manage().timeouts().implicitlyWait(3,TimeUnit.SECONDS);
         return Math.round((getSubTotal() + tipAmount() + taxValue() - offer()) * 100.0) / 100.0;
     }
 
