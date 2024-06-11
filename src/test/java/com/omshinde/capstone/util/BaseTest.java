@@ -1,16 +1,12 @@
-package com.omshinde.capstone;
+package com.omshinde.capstone.util;
 
-import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-
-import java.io.ByteArrayInputStream;
 
 public class BaseTest {
     private static final String URL="https://web-playground.ultralesson.com/";

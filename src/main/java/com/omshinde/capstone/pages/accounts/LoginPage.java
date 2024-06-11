@@ -40,11 +40,11 @@ public class LoginPage extends BasePage {
         return new ProfilePage(webDriver);
     }
 
-    public ForgotPasswordPage navToForgotPasswordPage(){
+    public ForgotPasswordPage navigateToForgotPasswordPage(){
         buttonActions.click(forgotPasswordLinkEle);
         return new ForgotPasswordPage(webDriver);
     }
-    public RegistrationPage navToRegisterationPage(){
+    public RegistrationPage navigateToRegistrationPage(){
         buttonActions.click(createAccountLinkEle);
         return new RegistrationPage(webDriver);
     }

@@ -1,5 +1,6 @@
-package com.omshinde.capstone;
+package com.omshinde.capstone.testAuthentications;
 
+import com.omshinde.capstone.util.BaseTest;
 import com.omshinde.capstone.models.User;
 import com.omshinde.capstone.pages.HomePage;
 import com.omshinde.capstone.pages.accounts.LoginPage;
@@ -16,7 +17,7 @@ import org.testng.annotations.Test;
  */
 @Epic("User Management")
 @Feature("Registration")
-public class RegistrationTest extends BaseTest{
+public class RegistrationTest extends BaseTest {
 
     /**
      * Verifies that a new user is able to register successfully.
@@ -27,11 +28,11 @@ public class RegistrationTest extends BaseTest{
         // Arrange
         User user= User.builder().build().init();
         HomePage homePage=new HomePage(getWebDriver());
-        LoginPage loginPage = homePage.getHeader().navToLoginPage();
+        LoginPage loginPage = homePage.getHeader().navigateToLoginPage();
 
         // Act
-        loginPage.navToRegisterationPage().createAccount(user);
-        ProfilePage profilePage = homePage.getHeader().navToProfilePage();
+        loginPage.navigateToRegistrationPage().createAccount(user);
+        ProfilePage profilePage = homePage.getHeader().navigateToProfilePage();
 
         // Assert
         String accountDetails= profilePage.getAccountDetails();
@@ -47,11 +48,11 @@ public class RegistrationTest extends BaseTest{
         // Arrange
         User user= User.builder().build().userWithoutEmail();
         HomePage homePage=new HomePage(getWebDriver());
-        LoginPage loginPage = homePage.getHeader().navToLoginPage();
+        LoginPage loginPage = homePage.getHeader().navigateToLoginPage();
         RegistrationPage registrationPage=new RegistrationPage(getWebDriver());
 
         // Act
-        loginPage.navToRegisterationPage().createAccount(user);
+        loginPage.navigateToRegistrationPage().createAccount(user);
 
         // Assert
         String errorMessage = registrationPage.errorMessage();
@@ -68,11 +69,11 @@ public class RegistrationTest extends BaseTest{
         // Arrange
         User user= User.builder().build().userWithoutPassword();
         HomePage homePage=new HomePage(getWebDriver());
-        LoginPage loginPage = homePage.getHeader().navToLoginPage();
+        LoginPage loginPage = homePage.getHeader().navigateToLoginPage();
         RegistrationPage registrationPage=new RegistrationPage(getWebDriver());
 
         // Act
-        loginPage.navToRegisterationPage().createAccount(user);
+        loginPage.navigateToRegistrationPage().createAccount(user);
 
         // Assert
         String errorMessage = registrationPage.errorMessage();

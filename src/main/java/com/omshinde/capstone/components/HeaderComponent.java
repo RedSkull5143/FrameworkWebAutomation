@@ -41,17 +41,17 @@ public class HeaderComponent extends BasePage {
         }
         return count;
     }
-    public LoginPage navToLoginPage(){
+    public LoginPage navigateToLoginPage(){
         buttonActions.click(profileBtnEle);
         return new LoginPage(webDriver);
     }
 
-    public ProfilePage navToProfilePage(){
+    public ProfilePage navigateToProfilePage(){
         buttonActions.click(profileBtnEle);
         return new ProfilePage(webDriver);
     }
 
-    public CartPage navToCartPage(){
+    public CartPage navigateToCartPage(){
         buttonActions.click(cartBtnEle);
         return new CartPage(webDriver);
     }

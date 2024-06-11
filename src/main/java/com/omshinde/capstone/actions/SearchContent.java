@@ -20,7 +20,7 @@ public class SearchContent {
 
     public SearchContent bellDress(){
         return SearchContent.builder()
-                .input("Bell Dress")
+                .input("Robe Dress")
                 .build();
     }
 

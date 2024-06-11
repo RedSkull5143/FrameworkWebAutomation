@@ -1,5 +1,6 @@
-package com.omshinde.capstone;
+package com.omshinde.capstone.testOrders;
 
+import com.omshinde.capstone.util.BaseTest;
 import com.omshinde.capstone.actions.SearchContent;
 import com.omshinde.capstone.modals.CartModal;
 import com.omshinde.capstone.models.User;
@@ -13,7 +14,7 @@ import org.testng.annotations.Test;
 // Annotations for Epic, Feature, and Story
 @Epic("Checkout Process")
 @Feature("Purchase Products")
-public class CheckOutPageTest extends BaseTest{
+public class CheckOutPageTest extends BaseTest {
 
     // Test verifies that a user can successfully purchase a product and receive a confirmation message
     @Test(testName = "testUserCanPurchaseProduct", description = "Verifies that a user can successfully purchase a product and receive a confirmation message.")
@@ -26,7 +27,7 @@ public class CheckOutPageTest extends BaseTest{
         HomePage homePage = new HomePage(getWebDriver());
 
         // Log in with valid user credentials
-        homePage.getHeader().navToLoginPage().login(user);
+        homePage.getHeader().navigateToLoginPage().login(user);
 
         // Search for a product and add it to cart
         SearchResultPage searchResultPage = homePage.getHeader().clickSearchBtn().searchProduct(searchContent.getInput());
@@ -60,7 +61,7 @@ public class CheckOutPageTest extends BaseTest{
         HomePage homePage = new HomePage(getWebDriver());
 
         // Navigate to the cart page
-        CartPage cartPage = homePage.getHeader().navToCartPage();
+        CartPage cartPage = homePage.getHeader().navigateToCartPage();
 
         // Verify that the cart is empty and checkout button is absent
         Assert.assertTrue(cartPage.isCartEmpty(), "Cart is empty");

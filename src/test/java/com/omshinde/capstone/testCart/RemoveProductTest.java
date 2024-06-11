@@ -1,5 +1,6 @@
-package com.omshinde.capstone;
+package com.omshinde.capstone.testCart;
 
+import com.omshinde.capstone.util.BaseTest;
 import com.omshinde.capstone.actions.SearchContent;
 import com.omshinde.capstone.modals.CartModal;
 import com.omshinde.capstone.pages.CartPage;
@@ -20,7 +21,7 @@ import io.qameta.allure.Story;
  */
 @Epic("Cart Management")
 @Feature("Product Removal")
-public class RemoveProductTest extends BaseTest{
+public class RemoveProductTest extends BaseTest {
 
     /**
      * Verifies the removal of a product from the cart.

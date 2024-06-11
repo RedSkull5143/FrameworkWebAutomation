@@ -1,4 +1,4 @@
-package com.omshinde.capstone;
+package com.omshinde.capstone.util;
 
 //import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

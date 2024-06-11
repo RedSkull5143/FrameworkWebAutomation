@@ -1,5 +1,6 @@
-package com.omshinde.capstone;
+package com.omshinde.capstone.testProdcuts;
 
+import com.omshinde.capstone.util.BaseTest;
 import com.omshinde.capstone.actions.SearchContent;
 import com.omshinde.capstone.pages.HomePage;
 import com.omshinde.capstone.pages.SearchResultPage;
@@ -12,7 +13,7 @@ import org.testng.annotations.Test;
 // Annotations for Epic, Feature, and Story
 @Epic("Search Functionality")
 @Feature("Special Characters Search")
-public class SpecialCharactersSearchTest extends BaseTest{
+public class SpecialCharactersSearchTest extends BaseTest {
 
     // Test verifies the search functionality using special characters
     @Test(testName = "testSearchWithSpecialCharacters", description = "Verify search functionality using special characters.")

@@ -1,5 +1,7 @@
-package com.omshinde.capstone;
+package com.omshinde.capstone.testProdcuts;
 
+import com.omshinde.capstone.util.BaseTest;
+import com.omshinde.capstone.Categories;
 import com.omshinde.capstone.actions.SearchContent;
 import com.omshinde.capstone.pages.HomePage;
 import com.omshinde.capstone.pages.SearchResultPage;
@@ -12,7 +14,7 @@ import org.testng.annotations.Test;
 // Annotations for Epic, Feature, and Story
 @Epic("Search and Filter")
 @Feature("Product Search")
-public class SearchAndFilterTest extends BaseTest{
+public class SearchAndFilterTest extends BaseTest {
 
     // Test verifies that products can be filtered according to the price range
     @Test(testName = "testSearchAndFilterProductAccordingToPriceRange", description = "Verifies that products can be filtered according to the price range.")

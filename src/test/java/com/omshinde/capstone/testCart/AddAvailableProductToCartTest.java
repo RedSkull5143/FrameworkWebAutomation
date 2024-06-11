@@ -1,5 +1,6 @@
-package com.omshinde.capstone;
+package com.omshinde.capstone.testCart;
 
+import com.omshinde.capstone.util.BaseTest;
 import com.omshinde.capstone.actions.SearchContent;
 import com.omshinde.capstone.modals.CartModal;
 import com.omshinde.capstone.pages.HomePage;

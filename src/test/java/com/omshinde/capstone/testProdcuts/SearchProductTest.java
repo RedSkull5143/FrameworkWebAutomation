@@ -1,5 +1,6 @@
-package com.omshinde.capstone;
+package com.omshinde.capstone.testProdcuts;
 
+import com.omshinde.capstone.util.BaseTest;
 import com.omshinde.capstone.actions.SearchContent;
 import com.omshinde.capstone.pages.HomePage;
 import com.omshinde.capstone.pages.ProductDetailsPage;
@@ -13,7 +14,7 @@ import org.testng.annotations.Test;
 // Annotations for Epic, Feature, and Story
 @Epic("Search and Navigation")
 @Feature("Product Search")
-public class SearchProductTest extends BaseTest{
+public class SearchProductTest extends BaseTest {
 
     // Test verifies that the user can navigate to the search result page
     @Test(testName = "testUserCanNavigateToSearchResultPage", description = "Verifies that the user can navigate to the search result page.")

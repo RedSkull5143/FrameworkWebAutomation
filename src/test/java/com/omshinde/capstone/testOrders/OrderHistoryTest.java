@@ -1,5 +1,6 @@
-package com.omshinde.capstone;
+package com.omshinde.capstone.testOrders;
 
+import com.omshinde.capstone.util.BaseTest;
 import com.omshinde.capstone.actions.SearchContent;
 import com.omshinde.capstone.modals.CartModal;
 import com.omshinde.capstone.models.User;
@@ -32,7 +33,7 @@ public class OrderHistoryTest extends BaseTest {
         HomePage homePage = new HomePage(getWebDriver());
 
         // Login and navigate to order history
-        homePage.getHeader().navToLoginPage().login(user);
+        homePage.getHeader().navigateToLoginPage().login(user);
         SearchResultPage searchResultPage = homePage.getHeader().clickSearchBtn().searchProduct(searchContent.getInput());
         ProductDetailsPage productDetailsPage = searchResultPage.clickToViewProductByName();
         CartModal cartModal = new CartModal(getWebDriver());
@@ -49,7 +50,7 @@ public class OrderHistoryTest extends BaseTest {
         BillingPage billingPage = cartPage.clickCheckOutBtn();
         billingPage.selectPayment();
         HomePage homePage1 = billingPage.completeOrder();
-        ProfilePage profilePage = homePage1.getHeader().navToProfilePage();
+        ProfilePage profilePage = homePage1.getHeader().navigateToProfilePage();
 
         // Verify payment status and order date
         Assert.assertTrue(profilePage.getPaymentStatus().contains("Pending"));
@@ -71,7 +72,7 @@ public class OrderHistoryTest extends BaseTest {
         HomePage homePage = new HomePage(getWebDriver());
 
         // Login and navigate to order details
-        homePage.getHeader().navToLoginPage().login(user);
+        homePage.getHeader().navigateToLoginPage().login(user);
         SearchResultPage searchResultPage = homePage.getHeader().clickSearchBtn().searchProduct(searchContent.getInput());
         ProductDetailsPage productDetailsPage = searchResultPage.clickToViewProductByName();
         int quantitySelected = productDetailsPage.getQuantitySelected();
@@ -90,7 +91,7 @@ public class OrderHistoryTest extends BaseTest {
         String product = String.valueOf(billingPage.getProductName());
         billingPage.selectPayment();
         HomePage homePage1 = billingPage.completeOrder();
-        OrderDetailsPage orderDetailsPage = homePage1.getHeader().navToProfilePage().navToOrderDetails();
+        OrderDetailsPage orderDetailsPage = homePage1.getHeader().navigateToProfilePage().navToOrderDetails();
 
         // Verify order details
         LocalDate currentDate = LocalDate.now();

@@ -16,6 +16,7 @@ public class CartPage extends BasePage{
     @FindBy(xpath = "//button[@id='checkout']")
     private WebElement checkOutBtn;
 
+
     @FindBy(xpath = "//*[@id=\"shopify-section-template--15328405520605__cart-items\"]/cart-items/div[1]/h1")
     private WebElement cartHeading;
 
