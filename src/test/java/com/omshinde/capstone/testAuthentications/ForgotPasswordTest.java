@@ -31,19 +31,24 @@ public class ForgotPasswordTest extends BaseTest {
     public void testRedirectUserToForgotPasswordPage() {
         logger.info("Executing testRedirectUserToForgotPasswordPage: Validating user redirection to the Forgot Password page");
 
-        // Initialize pages
-        HomePage homePage = new HomePage(getWebDriver());
+        try {
+            // Initialize pages
+            HomePage homePage = new HomePage(getWebDriver());
 
-        // Navigate to the "Forgot Password" page
-        navigationLogger.info("Navigating to Login Page");
-        LoginPage loginPage = homePage.getHeader().navigateToLoginPage();
-        navigationLogger.info("Navigating to Forgot Password Page");
-        ForgotPasswordPage forgotPasswordPage = loginPage.navigateToForgotPasswordPage();
+            // Navigate to the "Forgot Password" page
+            navigationLogger.info("Navigating to Login Page");
+            LoginPage loginPage = homePage.getHeader().navigateToLoginPage();
+            navigationLogger.info("Navigating to Forgot Password Page");
+            ForgotPasswordPage forgotPasswordPage = loginPage.navigateToForgotPasswordPage();
 
-        // Verify the presence of the "Reset your password" heading
-        String resetPasswordPageHeading = forgotPasswordPage.getResetPasswordPageHeading();
-        Assert.assertTrue(resetPasswordPageHeading.contains("Reset your password"));
-        logger.info("Reset Password page heading verified successfully");
+            // Verify the presence of the "Reset your password" heading
+            String resetPasswordPageHeading = forgotPasswordPage.getResetPasswordPageHeading();
+            Assert.assertTrue(resetPasswordPageHeading.contains("Reset your password"));
+            logger.info("Reset Password page heading verified successfully");
+        } catch (Exception e) {
+            logger.error("Error occurred during test execution", e);
+            throw e; // Rethrow the exception to mark the test as failed
+        }
     }
 
     // Test to verify the successful submission of a password reset request
@@ -53,24 +58,29 @@ public class ForgotPasswordTest extends BaseTest {
     public void testForgotPasswordSuccessful() {
         logger.info("Executing testForgotPasswordSuccessful: Verifying successful submission of password reset request");
 
-        // Initialize user data
-        User user = User.builder().build().init();
-        userLogger.info("User initialized with email: {}", user.getEmailID());
+        try {
+            // Initialize user data
+            User user = User.builder().build().init();
+            userLogger.info("User initialized with email: {}", user.getEmailID());
 
-        // Initialize pages
-        HomePage homePage = new HomePage(getWebDriver());
+            // Initialize pages
+            HomePage homePage = new HomePage(getWebDriver());
 
-        // Submit a password reset request
-        navigationLogger.info("Navigating to Login Page");
-        LoginPage loginPage = homePage.getHeader().navigateToLoginPage();
-        navigationLogger.info("Navigating to Forgot Password Page");
-        ForgotPasswordPage forgotPasswordPage = loginPage.navigateToForgotPasswordPage();
-        navigationLogger.info("Submitting password reset request");
-        LoginPage afterForgotPasswordPage = forgotPasswordPage.forgotPassword(user);
+            // Submit a password reset request
+            navigationLogger.info("Navigating to Login Page");
+            LoginPage loginPage = homePage.getHeader().navigateToLoginPage();
+            navigationLogger.info("Navigating to Forgot Password Page");
+            ForgotPasswordPage forgotPasswordPage = loginPage.navigateToForgotPasswordPage();
+            navigationLogger.info("Submitting password reset request");
+            LoginPage afterForgotPasswordPage = forgotPasswordPage.forgotPassword(user);
 
-        // Verify the display of the success message
-        String message = afterForgotPasswordPage.forgotPasswordMessage();
-        Assert.assertTrue(message.contains("We've sent you an email with a link to update your password."));
-        logger.info("Success message verified: {}", message);
+            // Verify the display of the success message
+            String message = afterForgotPasswordPage.forgotPasswordMessage();
+            Assert.assertTrue(message.contains("We've sent you an email with a link to update your password."));
+            logger.info("Success message verified: {}", message);
+        } catch (Exception e) {
+            logger.error("Error occurred during test execution", e);
+            throw e; // Rethrow the exception to mark the test as failed
+        }
     }
 }

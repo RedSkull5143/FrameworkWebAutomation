@@ -24,21 +24,26 @@ public class SpecialCharactersSearchTest extends BaseTest {
     @Test(testName = "testSearchWithSpecialCharacters", description = "Verify search functionality using special characters.")
     @Story("User searches with special characters")
     public void testSearchWithSpecialCharacters(){
-        // Arrange
-        logger.info("Initializing test data and pages");
-        SearchContent searchContent = SearchContent.builder().build().specialCharacters();
-        HomePage homePage = new HomePage(getWebDriver());
+        try {
+            // Arrange
+            logger.info("Initializing test data and pages");
+            SearchContent searchContent = SearchContent.builder().build().specialCharacters();
+            HomePage homePage = new HomePage(getWebDriver());
 
-        // Act
-        logger.info("Performing search with special characters");
-        SearchResultPage searchResultPage = homePage.getHeader().clickSearchBtn().searchProduct(searchContent.getInput());
+            // Act
+            logger.info("Performing search with special characters");
+            SearchResultPage searchResultPage = homePage.getHeader().clickSearchBtn().searchProduct(searchContent.getInput());
 
-        // Check if any product is available in the search results
-        boolean isProductAvailable = !searchResultPage.getProductName().isEmpty();
+            // Check if any product is available in the search results
+            boolean isProductAvailable = !searchResultPage.getProductName().isEmpty();
 
-        // Assert
-        logger.info("Asserting search results");
-        Assert.assertTrue(searchResultPage.getResultsCount().isDisplayed(), "Search results page should load without errors.");
-        Assert.assertTrue(isProductAvailable, "Search results should be relevant to the query or a proper message should be displayed.");
+            // Assert
+            logger.info("Asserting search results");
+            Assert.assertTrue(searchResultPage.getResultsCount().isDisplayed(), "Search results page should load without errors.");
+            Assert.assertTrue(isProductAvailable, "Search results should be relevant to the query or a proper message should be displayed.");
+        } catch (Exception e) {
+            logger.error("An exception occurred during the test execution: " + e.getMessage());
+            Assert.fail("Test failed due to an unexpected exception: " + e.getMessage());
+        }
     }
 }

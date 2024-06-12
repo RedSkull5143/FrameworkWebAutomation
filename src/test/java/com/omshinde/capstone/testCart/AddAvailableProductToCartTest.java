@@ -32,35 +32,40 @@ public class AddAvailableProductToCartTest extends BaseTest {
      */
     @Test(testName = "testUserCanAddProductToCartWhenInStock", description = "Verifies that a user is able to successfully add a product to the cart when it is available for purchase.")
     public void testUserCanAddProductToCartWhenInStock() {
-        logger.info("Executing testUserCanAddProductToCartWhenInStock: Verifying that a user can add a product to the cart when it is in stock");
+        try {
+            logger.info("Executing testUserCanAddProductToCartWhenInStock: Verifying that a user can add a product to the cart when it is in stock");
 
-        // Create a search content object for the product (bell dress in this case)
-        SearchContent searchContent = SearchContent.builder().build().bellDress();
-        searchLogger.info("Search Content: {}", searchContent.getInput());
+            // Create a search content object for the product (bell dress in this case)
+            SearchContent searchContent = SearchContent.builder().build().bellDress();
+            searchLogger.info("Search Content: {}", searchContent.getInput());
 
-        // Navigate to the homepage and perform a search for the product
-        HomePage homePage = new HomePage(getWebDriver());
-        homePage.getHeader().clickSearchBtn().searchProduct(searchContent.getInput());
+            // Navigate to the homepage and perform a search for the product
+            HomePage homePage = new HomePage(getWebDriver());
+            homePage.getHeader().clickSearchBtn().searchProduct(searchContent.getInput());
 
-        // Navigate to the search results page and select the product to view its details
-        SearchResultPage searchResultPage = new SearchResultPage(getWebDriver());
-        ProductDetailsPage productDetailsPage = searchResultPage.clickToViewProductByName();
-        cartLogger.debug("Navigated to Product Details Page");
+            // Navigate to the search results page and select the product to view its details
+            SearchResultPage searchResultPage = new SearchResultPage(getWebDriver());
+            ProductDetailsPage productDetailsPage = searchResultPage.clickToViewProductByName();
+            cartLogger.debug("Navigated to Product Details Page");
 
-        // Initialize the cart modal
-        CartModal cartModal = new CartModal(getWebDriver());
+            // Initialize the cart modal
+            CartModal cartModal = new CartModal(getWebDriver());
 
-        // Check if the product is in stock
-        if (!productDetailsPage.isProductSoldOut()) {
-            // Add the product to the cart
-            productDetailsPage.clickAddToCart();
-            // Verify that the success message is displayed
-            Assert.assertTrue(cartModal.getSuccessMessage().contains("Item added to your cart"));
-            cartLogger.info("Product Added to the Cart");
-        } else {
-            // If the product is out of stock, log an error and fail the test
-            Assert.fail("Product Out of Stock");
-            cartLogger.error("Product is Out of Stock");
+            // Check if the product is in stock
+            if (!productDetailsPage.isProductSoldOut()) {
+                // Add the product to the cart
+                productDetailsPage.clickAddToCart();
+                // Verify that the success message is displayed
+                Assert.assertTrue(cartModal.getSuccessMessage().contains("Item added to your cart"));
+                cartLogger.info("Product Added to the Cart");
+            } else {
+                // If the product is out of stock, log an error and fail the test
+                Assert.fail("Product Out of Stock");
+                cartLogger.error("Product is Out of Stock");
+            }
+        } catch (Exception e) {
+            logger.error("Error occurred during test execution: testUserCanAddProductToCartWhenInStock", e);
+            throw e; // Rethrow the exception to mark the test as failed
         }
     }
 
@@ -70,41 +75,46 @@ public class AddAvailableProductToCartTest extends BaseTest {
      */
     @Test(testName = "testCartCountIncreasesAfterAddingProduct", description = "Verifies that the cart count is increased by one after adding a product to the cart.")
     public void testCartCountIncreasesAfterAddingProduct() {
-        logger.info("Executing testCartCountIncreasesAfterAddingProduct: Verifying that the cart count is increased after adding a product to the cart");
+        try {
+            logger.info("Executing testCartCountIncreasesAfterAddingProduct: Verifying that the cart count is increased after adding a product to the cart");
 
-        // Create a search content object for the product (bell dress in this case)
-        SearchContent searchContent = SearchContent.builder().build().bellDress();
-        searchLogger.info("Search content: {}", searchContent.getInput());
+            // Create a search content object for the product (bell dress in this case)
+            SearchContent searchContent = SearchContent.builder().build().bellDress();
+            searchLogger.info("Search content: {}", searchContent.getInput());
 
-        // Navigate to the homepage and perform a search for the product
-        HomePage homePage = new HomePage(getWebDriver());
-        homePage.getHeader().clickSearchBtn().searchProduct(searchContent.getInput());
+            // Navigate to the homepage and perform a search for the product
+            HomePage homePage = new HomePage(getWebDriver());
+            homePage.getHeader().clickSearchBtn().searchProduct(searchContent.getInput());
 
-        // Navigate to the search results page and select the product to view its details
-        SearchResultPage searchResultPage = new SearchResultPage(getWebDriver());
-        ProductDetailsPage productDetailsPage = searchResultPage.clickToViewProductByName();
-        cartLogger.debug("Navigated to product details page.");
+            // Navigate to the search results page and select the product to view its details
+            SearchResultPage searchResultPage = new SearchResultPage(getWebDriver());
+            ProductDetailsPage productDetailsPage = searchResultPage.clickToViewProductByName();
+            cartLogger.debug("Navigated to product details page.");
 
-        // Initialize the cart modal
-        CartModal cartModal = new CartModal(getWebDriver());
+            // Initialize the cart modal
+            CartModal cartModal = new CartModal(getWebDriver());
 
-        // Check if the product is in stock
-        if (!productDetailsPage.isProductSoldOut()) {
-            // Get the initial cart count
-            int initialCount = homePage.getHeader().getCartCount();
-            // Add the product to the cart
-            productDetailsPage.clickAddToCart();
-            // Verify that the success message is displayed
-            Assert.assertTrue(cartModal.getSuccessMessage().contains("Item added to your cart"));
-            // Get the new cart count
-            int newCount = homePage.getHeader().getCartCount();
-            // Verify that the cart count has increased by one
-            Assert.assertEquals(newCount, initialCount + 1);
-            cartLogger.info("Cart count increased successfully.");
-        } else {
-            // If the product is out of stock, log an error and fail the test
-            Assert.fail("Product Out of Stock");
-            cartLogger.error("Product is out of stock.");
+            // Check if the product is in stock
+            if (!productDetailsPage.isProductSoldOut()) {
+                // Get the initial cart count
+                int initialCount = homePage.getHeader().getCartCount();
+                // Add the product to the cart
+                productDetailsPage.clickAddToCart();
+                // Verify that the success message is displayed
+                Assert.assertTrue(cartModal.getSuccessMessage().contains("Item added to your cart"));
+                // Get the new cart count
+                int newCount = homePage.getHeader().getCartCount();
+                // Verify that the cart count has increased by one
+                Assert.assertEquals(newCount, initialCount + 1);
+                cartLogger.info("Cart count increased successfully.");
+            } else {
+                // If the product is out of stock, log an error and fail the test
+                Assert.fail("Product Out of Stock");
+                cartLogger.error("Product is out of stock.");
+            }
+        } catch (Exception e) {
+            logger.error("Error occurred during test execution: testCartCountIncreasesAfterAddingProduct", e);
+            throw e; // Rethrow the exception to mark the test as failed
         }
     }
 }

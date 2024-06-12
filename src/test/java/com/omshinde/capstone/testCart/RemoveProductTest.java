@@ -34,35 +34,40 @@ public class RemoveProductTest extends BaseTest {
     @Test(testName = "Verify Product Removal From Cart", description = "Verifies that the product is successfully removed from the cart.")
     @Story("As a shopper, I want to remove products from my cart so that I can adjust my purchase before checkout.")
     public void verifyProductRemovalFromCart(){
-        // Arrange
-        SearchContent searchContent = SearchContent.builder().build().bellDress();
-        logger.info("Initializing search content: {}", searchContent);
-        HomePage homePage = new HomePage(getWebDriver());
-        logger.info("Navigated to the Home page");
+        try {
+            // Arrange
+            SearchContent searchContent = SearchContent.builder().build().bellDress();
+            logger.info("Initializing search content: {}", searchContent);
+            HomePage homePage = new HomePage(getWebDriver());
+            logger.info("Navigated to the Home page");
 
-        // Act
-        SearchResultPage searchResultPage = homePage.getHeader().clickSearchBtn().searchProduct(searchContent.getInput());
-        logger.info("Performed search for product: {}", searchContent.getInput());
-        ProductDetailsPage productDetailsPage = searchResultPage.clickToViewProductByName();
-        logger.info("Navigated to product details page");
+            // Act
+            SearchResultPage searchResultPage = homePage.getHeader().clickSearchBtn().searchProduct(searchContent.getInput());
+            logger.info("Performed search for product: {}", searchContent.getInput());
+            ProductDetailsPage productDetailsPage = searchResultPage.clickToViewProductByName();
+            logger.info("Navigated to product details page");
 
-        CartModal cartModal = new CartModal(getWebDriver());
-        CartPage cartPage = new CartPage(getWebDriver());
+            CartModal cartModal = new CartModal(getWebDriver());
+            CartPage cartPage = new CartPage(getWebDriver());
 
-        if(!productDetailsPage.isProductSoldOut()) {
-            productDetailsPage.clickAddToCart();
-            logger.info("Added product to cart");
-        } else {
-            Assert.fail("Product Out of Stock");
+            if(!productDetailsPage.isProductSoldOut()) {
+                productDetailsPage.clickAddToCart();
+                logger.info("Added product to cart");
+            } else {
+                Assert.fail("Product Out of Stock");
+            }
+
+            cartModal.clickAddToCart();
+            logger.info("Clicked on Add to Cart button in modal");
+            cartPage.removeProductFromCart(cartPage.getAddedProductName());
+            logger.info("Removed product from cart");
+
+            // Assert
+            Assert.assertTrue(cartPage.isCartEmpty());
+            logger.info("Cart is empty");
+        } catch (Exception e) {
+            logger.error("Error occurred during test execution: verifyProductRemovalFromCart", e);
+            throw e; // Rethrow the exception to mark the test as failed
         }
-
-        cartModal.clickAddToCart();
-        logger.info("Clicked on Add to Cart button in modal");
-        cartPage.removeProductFromCart(cartPage.getAddedProductName());
-        logger.info("Removed product from cart");
-
-        // Assert
-        Assert.assertTrue(cartPage.isCartEmpty());
-        logger.info("Cart is empty");
     }
 }

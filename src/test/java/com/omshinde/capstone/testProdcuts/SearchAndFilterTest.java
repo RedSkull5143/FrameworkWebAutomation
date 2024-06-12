@@ -1,4 +1,4 @@
-package com.omshinde.capstone.testProdcuts;
+package com.omshinde.capstone.testProducts;
 
 import com.omshinde.capstone.util.BaseTest;
 import com.omshinde.capstone.Categories;
@@ -24,20 +24,29 @@ public class SearchAndFilterTest extends BaseTest {
     // Test verifies that products can be filtered according to the price range
     @Test(testName = "testSearchAndFilterProductAccordingToPriceRange", description = "Verifies that products can be filtered according to the price range.")
     @Story("User filters products by price range")
-    public void testSearchAndFilterProductAccordingToPriceRange() throws InterruptedException {
-        // Arrange
-        logger.info("Initializing test data and pages");
-        SearchContent searchContent = SearchContent.builder().build().init();
-        HomePage homePage = new HomePage(getWebDriver());
+    public void testSearchAndFilterProductAccordingToPriceRange() {
+        try {
+            // Arrange
+            logger.info("Initializing test data and pages");
+            SearchContent searchContent = SearchContent.builder().build().init();
+            HomePage homePage = new HomePage(getWebDriver());
 
-        // Act
-        logger.info("Searching for a product and applying price filter");
-        SearchResultPage searchResultPage = homePage.getHeader().clickSearchBtn().searchProduct(searchContent.getInput());
-        Categories categories = new Categories(getWebDriver());
-        boolean isPriceFiltered = categories.openFilterModal().searchByPrice();
+            // Act
+            logger.info("Searching for a product and applying price filter");
+            SearchResultPage searchResultPage = homePage.getHeader().clickSearchBtn().searchProduct(searchContent.getInput());
+            Categories categories = new Categories(getWebDriver());
+            boolean isPriceFiltered = categories.openFilterModal().searchByPrice();
 
-        // Assert
-        logger.info("Asserting that products are within the specified price range after applying the price filter");
-        Assert.assertTrue(isPriceFiltered, "Products should be within the specified price range after applying the price filter.");
+            // Assert
+            logger.info("Asserting that products are within the specified price range after applying the price filter");
+            Assert.assertTrue(isPriceFiltered, "Products should be within the specified price range after applying the price filter.");
+        } catch (InterruptedException e) {
+            logger.error("Interrupted while waiting for filter to apply", e);
+            Thread.currentThread().interrupt(); // Restore interrupted status
+            Assert.fail("Interrupted while waiting for filter to apply");
+        } catch (Exception e) {
+            logger.error("An error occurred during test execution", e);
+            Assert.fail("An error occurred during test execution: " + e.getMessage());
+        }
     }
 }
